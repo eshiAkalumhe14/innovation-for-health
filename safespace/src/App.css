@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+  animation: heart_pulse 2s infinite;
+}
+
+.App-title {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.App-tagline {
+  font-family: 'Karla', sans-serif;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+
+.coloured-text {
+  transition: color 0.5s ease;
+}
+
+/* ===================== THEME STYLES ===================== */
+
+/* DARK MODE */
+.App.dark .App-header {
+  background: linear-gradient(to bottom, #1c1e3a, #292b57);
+  color: white;
+}
+
+.App.dark .coloured-text {
+  color: #db9bf1;
+}
+
+
+/* LIGHT MODE */
+.App.light .App-header {
+  background: linear-gradient(to bottom right, #f5f4f1, #e6e2de);
+  color: #292b57;
+}
+.App.light .coloured-text {
+  color: #db9bf1; /* warm lavender for accents */
+}
+
+/* Header Layout */
+.App-header {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: 2px solid currentColor;
+  color: inherit;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ===================== ANIMATIONS ===================== */
+
+@keyframes slideUpFade {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.slide-up {
+  animation: slideUpFade 1s forwards;
+}
+
+@keyframes heart_pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+.switch-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  width: 60px;
+  height: 30px;
+}
+
+.switch-track {
+  background-color: #ccc;
+  border-radius: 50px;
+  height: 100%;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.switch-track.light {
+  background-color: #292b57;
+}
+
+.switch-track.dark {
+  background-color: #000000;
+}
+
+.switch-thumb {
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.4s ease;
+}
+
+.switch-thumb.dark {
+  left: 31px; /* Slide to right in dark mode */
+}
+
+.theme-icon {
+  width: 16px;
+  height: 16px;
+}

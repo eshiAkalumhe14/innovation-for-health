@@ -1,0 +1,17 @@
+.qodo
+# Model files
+*.gguf
+*.pt
+*.bin
+*.onnx
+*.ckpt
+*.safetensors
+*.h5
+
+# Hugging Face cache (if using)
+~/.cache/huggingface
+
+# Common folders
+__pycache__/
+*.log
+node_modules
