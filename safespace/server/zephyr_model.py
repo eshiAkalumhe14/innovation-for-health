@@ -7,7 +7,7 @@ def download_model_if_missing(filename, drive_id, dest_folder="models"):
     filepath = os.path.join(dest_folder, filename)
 
     if not os.path.exists(filepath):
-        print(f"📥 Downloading {filename} from Google Drive...")
+
         url = f"https://drive.google.com/uc?id={drive_id}"
         gdown.download(url, output=filepath, quiet=False)
     else:
