@@ -1,8 +1,6 @@
 import logo from './logo_op2.png';
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import HomePage from './Home.js';
 import LightMode from './lightmode.png'
 import DarkMode from './darkmode.png';

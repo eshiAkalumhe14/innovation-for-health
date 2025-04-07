@@ -11,7 +11,9 @@
 # Hugging Face cache (if using)
 ~/.cache/huggingface
 
-# Common folders
+# Vercel + Python + Node junk
 __pycache__/
-*.log
-node_modules
+.env
+node_modules/
+build/
+dist/
