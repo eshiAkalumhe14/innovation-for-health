@@ -20,14 +20,13 @@ def download_model_if_missing(filename, drive_id, dest_folder="models"):
 LLAMA_DRIVE_ID = "1x0Kn3w9uDq0x3hhTrwNsp64ayKDmCbGD"
 
 # Automatically download if missing
-llama_model_path = download_model_if_missing(
-    filename="llama-2-7b-chat.Q4_K_M.gguf",
-    drive_id=LLAMA_DRIVE_ID
-)
+
+llama_id = os.getenv("LLAMA_DRIVE_ID")
+model_path = download_model_if_missing("llama-2-7b-chat.Q4_K_M.gguf", llama_id)
 
 # Load the LLaMA model
 llm = Llama(
-    model_path=llama_model_path,
+    model_path=model_path,
     n_ctx=2048,
     verbose=False
 )

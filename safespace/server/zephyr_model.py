@@ -16,10 +16,10 @@ def download_model_if_missing(filename, drive_id, dest_folder="models"):
     return filepath
 
 # Example for Zephyr
-model_path = download_model_if_missing(
-    filename="zephyr-7b-beta.Q4_K_M.gguf",
-    drive_id="1UQleUAhlkGmVPGaNu8mK6wQfSXize0uY"
-)
+
+
+zephyr_id = os.getenv("ZEPHYR_DRIVE_ID")
+model_path = download_model_if_missing("zephyr-7b-beta.Q4_K_M.gguf", zephyr_id)
 
 llm = Llama(
     model_path=model_path,
