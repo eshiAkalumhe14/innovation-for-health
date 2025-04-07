@@ -1,9 +1,10 @@
-import logo from './logo_op2.png';
 import './App.css';
 import React, { useEffect, useState } from 'react';
 import HomePage from './Home.js';
 import LightMode from './lightmode.png'
 import DarkMode from './darkmode.png';
+import logo from './pic_logo.jpg';
+
 import { HeartHandshake } from 'lucide-react';
 
 
@@ -53,7 +54,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <HeartHandshake className="App-logo " size={500} />
+              <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">
             <span className="coloured-text">S</span>afe<span className="coloured-text">S</span>pace<span className="coloured-text">AI</span> </h1>
           <h3 className="App-tagline">

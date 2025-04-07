@@ -10,6 +10,8 @@
   height: 20vmin;
   pointer-events: none;
   animation: heart_pulse 2s infinite;
+  border-radius: 50%;
+  border : 10px solid white;
 }
 
 .App-title {

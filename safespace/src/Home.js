@@ -39,7 +39,7 @@ import { SendHorizonal, AlignRight , Copy, ThumbsUp, ThumbsDown, Volume2,  Plus,
   
       const interval = setInterval(() => {
         const inactiveTime = Date.now() - lastActivity;
-        if (inactiveTime > 1 * 60 * 1000 && !showAutoClearWarning) {
+        if (inactiveTime > 5 * 60 * 1000 && !showAutoClearWarning) {
           setShowAutoClearWarning(true);
           setAutoClearCountdown(30);
         }
