@@ -1,7 +1,36 @@
 from llama_cpp import Llama
+import os
+import gdown
+
+def download_model_if_missing(filename, drive_id, dest_folder="models"):
+    os.makedirs(dest_folder, exist_ok=True)
+    filepath = os.path.join(dest_folder, filename)
+
+    if not os.path.exists(filepath):
+        print(f"📥 Downloading {filename} from Google Drive...")
+        url = f"https://drive.google.com/uc?id={drive_id}"
+        gdown.download(url, output=filepath, quiet=False)
+    else:
+        print(f"✅ Model already exists at {filepath}")
+
+    return filepath
+
+
+# 🔻 Replace this with your actual Google Drive file ID
+LLAMA_DRIVE_ID = "1x0Kn3w9uDq0x3hhTrwNsp64ayKDmCbGD"
+
+# Automatically download if missing
+llama_model_path = download_model_if_missing(
+    filename="llama-2-7b-chat.Q4_K_M.gguf",
+    drive_id=LLAMA_DRIVE_ID
+)
 
 # Load the LLaMA model
-llm = Llama(model_path="llama-2-7b-chat.Q4_K_M.gguf", n_ctx=2048, verbose=False)
+llm = Llama(
+    model_path=llama_model_path,
+    n_ctx=2048,
+    verbose=False
+)
 
 # In-memory feedback log for LLaMA
 llama_feedback_log = []

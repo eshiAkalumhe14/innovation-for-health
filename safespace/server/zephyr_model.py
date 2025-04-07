@@ -1,7 +1,31 @@
 from llama_cpp import Llama
+import os
+import gdown
 
-# Load the Zephyr model
-llm = Llama(model_path="zephyr-7b-beta.Q4_K_M.gguf", n_ctx=2048, verbose=True)
+def download_model_if_missing(filename, drive_id, dest_folder="models"):
+    os.makedirs(dest_folder, exist_ok=True)
+    filepath = os.path.join(dest_folder, filename)
+
+    if not os.path.exists(filepath):
+        print(f"📥 Downloading {filename} from Google Drive...")
+        url = f"https://drive.google.com/uc?id={drive_id}"
+        gdown.download(url, output=filepath, quiet=False)
+    else:
+        print(f"✅ Model already exists at {filepath}")
+
+    return filepath
+
+# Example for Zephyr
+model_path = download_model_if_missing(
+    filename="zephyr-7b-beta.Q4_K_M.gguf",
+    drive_id="1UQleUAhlkGmVPGaNu8mK6wQfSXize0uY"
+)
+
+llm = Llama(
+    model_path=model_path,
+    n_ctx=2048,
+    verbose=True
+)
 
 # Dummy in-memory boost table (not used since Zephyr doesn't retrieve context)
 feedback_boost_log = []

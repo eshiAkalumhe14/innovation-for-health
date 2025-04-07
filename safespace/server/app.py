@@ -1,5 +1,7 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from RAG_handler import mistral_rag_response, update_ranking_with_feedback
 from zephyr_model import zephyr_response, update_zephyr_feedback_boost
 from llama_model import llama_response, update_llama_feedback
@@ -12,6 +14,13 @@ app.add_middleware(CORSMiddleware,
                    allow_headers=["*"])
 
 feedback_store = []
+
+# Serve static React build files
+app.mount("/static", StaticFiles(directory="client/build/static"), name="static")
+
+@app.get("/")
+def serve_root():
+    return FileResponse("client/build/index.html")
 
 
 # Load summarization model once at app startup
